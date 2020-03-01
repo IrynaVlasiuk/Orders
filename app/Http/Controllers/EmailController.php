@@ -16,7 +16,7 @@ class EmailController extends Controller
             'name' => env('MAIL_TEST_RECIPIENT_NAME', 'John Doe'),
         ];
 
-        $this->testMode = env('MAIL_TEST_MODE');
+        $this->testMode = env('MAIL_TEST_MODE', false);
 
         $this->emailCC1 = [
             'address'     => env('MAIL_CC1'),
