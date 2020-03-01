@@ -1,0 +1,262 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+$breakpoint-alpha: 480px;
+
+.rwd-table {
+    margin: 50px 0;
+    min-width: 300px;
+
+    tr {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        display: block;
+
+        &:first-child {
+            padding-top: .5em;
+        }
+        &:last-child {
+            padding-bottom: .5em;
+        }
+
+        &:before {
+            content: attr(data-th)": ";
+            font-weight: bold;
+
+            width: 6.5em;
+            display: inline-block;
+
+            @media (min-width: $breakpoint-alpha) {
+                display: none;
+            }
+        }
+    }
+
+    th, td {
+        text-align: left;
+
+        @media (min-width: $breakpoint-alpha) {
+            display: table-cell;
+            padding: .25em .5em;
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+
+    }
+
+
+}
+
+h1 {
+    font-weight: normal;
+    letter-spacing: -1px;
+    color: #34495E;
+}
+
+.rwd-table {
+    background: #34495E;
+    color: #fff;
+    border-radius: .4em;
+    overflow: hidden;
+    tr {
+        border-color: lighten(#34495E, 10%);
+    }
+    th, td {
+        margin: .5em 1em;
+        @media (min-width: $breakpoint-alpha) {
+            padding: 1em !important;
+        }
+    }
+    th, td:before {
+        color: #dd5;
+        width: 22%;
+    }
+}
+
+.rwd-table th div:first-child {
+    display: flex;
+}
+
+.rwd-table .order {
+    margin-left: 7px;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.rwd-table .order a {
+    margin-bottom: -10px;
+    color: #dd5;
+}
+
+.rwd-table .order .fa-caret-up.asc, .rwd-table .order .fa-caret-down.desc {
+    display: none;
+}
+
+.rwd-table .order .fa-caret-down.asc {
+    margin-top: 16px;
+}
+
+.rwd-table th .column-name {
+    margin-top: 3px;
+}
+
+.table-section {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.rwd-table td:last-child {
+    display: inline-flex;
+}
+
+.input-group, .button-block {
+    display: inline-flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px 0px;
+    position: relative;
+}
+
+.input-group input {
+    border: none;
+    border-bottom: 1px solid;
+    height: 30px;
+}
+
+.input-group input:focus {
+    outline: none;
+}
+
+.input-group input::placeholder {
+    font-size: 17px;
+    text-align: left;
+}
+
+.container.orders {
+    color: $dimGrey;
+    border: 2px solid;
+    border-radius: 7px;
+    width: 60%;
+    margin-top: 100px;
+
+    .navbar {
+        width: 100%;
+        text-align: center;
+        display: block;
+        border-bottom: 2px solid;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        background-color: Gainsboro;
+    }
+
+    .title {
+        display: block;
+        width: 100%;
+        margin-left: 10%;
+        font-size: 31px;
+    }
+
+    .section-search {
+        border: 2px solid;
+        border-radius: 7px;
+        width: 80%;
+        padding: 20px;
+        margin-top: 50px;
+
+        .keyword_value {
+            width: 40%;
+            border-radius: 7px;
+            border: 2px solid;
+            border-color: $dimGrey;
+        }
+
+        select, .btn-search {
+            width:25%;
+            border-radius: 7px;
+            border: 2px solid;
+            border-color: $dimGrey;
+        }
+
+    }
+
+    .navbar {
+        .new-order {
+            float: left;
+            margin-top: 2px;
+        }
+
+        .add-order {
+            border-radius: 50%;
+            border: none;
+            background-color: $dimGrey;
+            width: 23px;
+            height: 23px;
+        }
+    }
+
+    .email-section {
+        width: 80%;
+        margin-top: 40px;
+        font-size: 19px;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .section-graphing {
+        width: 80%;
+    }
+}
+
+.container.orders.edit {
+    width: 40%;
+
+    .input-group {
+        width: 100%;
+        text-align:center;
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .title {
+        text-align:center;
+        margin-left:0px;
+    }
+
+    .button-block {
+        width: 100%;
+
+        .btn-submit {
+            width: 200px;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+
+
+
+
