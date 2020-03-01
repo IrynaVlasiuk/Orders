@@ -38,7 +38,7 @@ class EmailController extends Controller
                 ->send(new OrdersTableNotification('OrdersTest', 'layouts.emails.orders.ordersTable', $orders));
         } else {
             Mail::to($this->emailCC1['address'])
-//                ->cc($this->emailCC2['address'])
+                ->cc($this->emailCC2['address'])
                 ->send(new OrdersTableNotification('Orders', 'layouts.emails.orders.ordersTable', $orders));
         }
 
