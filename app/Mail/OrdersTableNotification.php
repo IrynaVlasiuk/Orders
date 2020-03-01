@@ -22,7 +22,10 @@ class OrdersTableNotification extends Mailable
         $this->view = $view;
         $this->data = $data;
 
-        $this->from = ['address' => env('MAIL_FROM_ADDRESS', 'orders@orders.com')];
+        $this->from = [
+            'address' => env('MAIL_FROM_ADDRESS', 'orders@orders.com'),
+            'name'    => env('MAIL_FROM_NAME', 'Orders')
+        ];
     }
 
     /**
