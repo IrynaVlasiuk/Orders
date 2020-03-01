@@ -35,7 +35,7 @@ class OrdersTableNotification extends Mailable
      */
     public function build()
     {
-        return $this->from($this->from)
+        return $this->from($this->from['address'], $this->from['name'])
             ->view($this->view)
             ->subject($this->subject)
             ->with(['orders' => $this->data]);
