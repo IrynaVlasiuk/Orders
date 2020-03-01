@@ -7,8 +7,10 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
-define('LARAVEL_START', microtime(true));
+use Illuminate\Support\Facades\Artisan;
 
+define('LARAVEL_START', microtime(true));
+Artisan::call('config:clear');
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
