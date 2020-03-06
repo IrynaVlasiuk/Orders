@@ -423,6 +423,7 @@ class ComposerStaticInitd21bd44a566576052cc08113d6610bd4
     );
 
     public static $classMap = array (
+        'App\\Charts\\OrderChart' => __DIR__ . '/../..' . '/app/Charts/OrderChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',

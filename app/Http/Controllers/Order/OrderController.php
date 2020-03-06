@@ -43,10 +43,7 @@ class OrderController extends Controller
 
     public function create(Order $order)
     {
-        $product = null;
-        foreach($order->products as $pr) {
-            $product = $pr;
-        }
+        $product = $order->products->first();
 
         $clients = Client::all();
         $products = Product::all();
@@ -61,6 +58,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        //TODO validation for all fields
         $request->validate([
             'date' => 'required|date',
             'amount' => 'required|numeric|max:10000',
@@ -70,7 +68,6 @@ class OrderController extends Controller
         $client = Client::find($request->client_id);
 
         $price = $product->total*$request->amount;
-        number_format($price, 2, '.', '');
 
         $order = new Order;
         $order->client()->associate($client->id);
@@ -92,10 +89,7 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        $product = null;
-        foreach($order->products as $pr) {
-            $product = $pr;
-        }
+        $product = $order->products->first();
 
         $clients = Client::all();
         $products = Product::all();
@@ -111,19 +105,16 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
+        //TODO validation for all fields
         $request->validate([
             'amount' => 'required|numeric',
             'date' => 'required|date',
         ]);
 
         $client = Client::find($request->client);
-        $product = null;
+        $product = $order->products->first();
 
-        foreach($order->products as $pr) {
-            $product = $pr;
-        }
          $newPrice = $product->total*$request->amount;
-         number_format($newPrice, 2, '.', '');
 
          $order->update([
              'total' => (double)$newPrice,
@@ -158,12 +149,12 @@ class OrderController extends Controller
                 $q->where($request->keyword, 'LIKE', '%' . $request->keyword_value . '%');
             });
         } else {
-            $orders = Order::whereHas('products')->with('client')
+            $orders = Order::with('products')->with('client')
                 ->join('clients', 'clients.id', '=', 'orders.client_id')
                 ->join('order_product', 'orders.id', '=', 'order_product.order_id')
                 ->join('products', 'products.id', '=', 'order_product.product_id')
+                ->select('orders.*', 'products.name AS products.name', 'clients.name AS clients.name')
                 ->where('clients.name', 'LIKE', '%'.$request->keyword_value.'%')
-                ->select('orders.*', 'products.*', 'clients.*')
                 ->orWhere('products.name', 'LIKE', '%'.$request->keyword_value.'%')
                 ->orWhere('orders.total', 'LIKE', '%'.$request->keyword_value.'%')
                 ->orWhere('orders.date', 'LIKE', '%'.$request->keyword_value.'%');

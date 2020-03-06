@@ -101,8 +101,7 @@
                         <th><div class="column-name">Actions</div></th>
                     </tr>
 
-                    @if($orders)
-                        @foreach($orders as $order)
+                        @forelse($orders as $order)
                         <tr>
                             <td>{{ $order->client->name }}</td>
                             @foreach($order->products as $product)
@@ -121,15 +120,15 @@
                                 </form>
                             </td>
                         </tr>
-                         @endforeach
-                     @else
-                        <div>There is no order</div>
-                    @endif
+
+                        @empty
+                            <div>There is no order</div>
+                        @endforelse
                 </table>
 
-                @if($orders)
+
                     {{ $orders->links() }}
-                @endif
+
 
             </div>
         </div>
